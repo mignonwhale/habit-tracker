@@ -31,6 +31,7 @@ npm install framer-motion@^11.15.0 react-hot-toast@^2.4.1
 
 # 아이콘
 npm install lucide-react@^0.456.0
+npm install @lucide/lab
 
 # 날짜 처리
 npm install date-fns@^4.1.0
@@ -51,6 +52,9 @@ npm install -D tailwindcss@^3.4.0
 npm install -D eslint@^9.15.0 @typescript-eslint/eslint-plugin@^8.15.0
 
 # npm install -D prettier@^3.3.3 eslint-plugin-prettier@^5.2.1
+
+# React Router 설치
+npm install react-router-dom
 ```
 
 ### 3. Tailwind CSS 설정

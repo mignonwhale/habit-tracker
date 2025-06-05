@@ -1,29 +1,43 @@
 import { useState } from "react"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
+import useHabitStore from '../store/habitStore'
 import type { ColorOptions } from "../types/habit"
 import CircleIcon from "./CircleIcon"
+import XIcon from './XIcon'
+import PlusIcon from './PlusIcon'
 
 const colorOptions: ColorOptions[] = [
-  { color: "red", value: "red-500" },
-  { color: "orange", value: "orange-400" },
-  { color: "yellow", value: "yellow-400" },
+  { id: "1", color: "red", value: "red-500" },
+  { id: "2", color: "orange", value: "orange-500" },
+  { id: "3", color: "yellow", value: "yellow-500" },
 ]
 
-export default function AddHabitForm() {
+export default function HabitForm() {
   const DEFAULT_COLOR = "red-500"
+  const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState(DEFAULT_COLOR)
   const [content, setContent] = useState("")
+  const addHabit = useHabitStore((state) => state.addHabit)
 
-  const handleClickSaveHabit = () => {
-    // TODO storage 저장
-    if (!confirm("save habit?")) {
-      return
-    }
-    console.log(content)
+  const handleSave = () => {
+    if (!content.trim()) { return }
+    toast.success("저장되었습니다!")
+    
+    // localStorage 저장
+    addHabit({
+      content: content.trim(),
+      color: selectedColor,
+    })
+    handleCancel()
+    navigate("/")
   }
-  const handleClickReset = () => {
+
+  const handleCancel = () => {
     setContent("")
     setSelectedColor(DEFAULT_COLOR)
   }
+
 
   return (
     <div className="flex flex-col items-center pt-10 space-y-4 w-1/2 ">
@@ -54,42 +68,15 @@ export default function AddHabitForm() {
           className="w-full bg-transparent outline-none placeholder-gray-400 px-3 py-2"
         />
         <div className="flex gap-2">
-          <button onClick={handleClickSaveHabit}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-circle-plus-icon lucide-circle-plus">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 12h8" />
-              <path d="M12 8v8" />
-            </svg>
+          <button onClick={handleSave}>
+           <PlusIcon/>
           </button>
-          <button onClick={handleClickReset}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-circle-x-icon lucide-circle-x">
-              <circle cx="12" cy="12" r="10" />
-              <path d="m15 9-6 6" />
-              <path d="m9 9 6 6" />
-            </svg>
+          <button onClick={handleCancel}>
+            <XIcon />
           </button>
         </div>
       </div>
+     
     </div>
   )
 }

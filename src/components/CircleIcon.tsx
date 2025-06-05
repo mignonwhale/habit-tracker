@@ -1,10 +1,7 @@
-type CircleIconProps = {
-  color?: string // Tailwind 색상 클래스 (예: "red-500", "blue-400")
-  width?: string 
-  height?: string
-}
+import type { IconProps } from '../types/habit'
 
-export default function CircleIcon({ color = "red-500", width = "30", height = "30" }: CircleIconProps) {
+
+export default function CircleIcon({ color = "red-500", width = "30", height = "30" }: IconProps) {
   const fillClass = `fill-${color}`
   const strokeClass = `stroke-${color}`
 

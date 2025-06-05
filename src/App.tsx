@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import AddHabitForm from './components/AddHabitForm'
-import HabitDashboard from './components/HabitDashboard'
-import Layout from './components/Layout'
+import HabitForm from "./components/HabitForm"
+import HabitDashboard from "./components/HabitDashboard"
+import Layout from "./components/Layout"
+import { Toaster } from "react-hot-toast"
 
 
 const router = createBrowserRouter([
@@ -15,14 +16,17 @@ const router = createBrowserRouter([
       },
       {
         path: "add-habit",
-        element: <AddHabitForm />,
+        element: <HabitForm />,
       },
-      
     ],
   },
 ])
 
-
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <>
+      <Toaster position="bottom-center" reverseOrder={false} />
+      <RouterProvider router={router} />
+    </>
+  )
 }

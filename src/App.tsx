@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import AddHabitForm from './components/AddHabitForm'
 import HabitDashboard from './components/HabitDashboard'
-import Layout from './components/layout'
+import Layout from './components/Layout'
 
 
 const router = createBrowserRouter([

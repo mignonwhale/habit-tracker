@@ -1,18 +1,6 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import type { Habit } from '../types/habit'
-import Habits from './habits'
+import Habits from './Habits'
 
-
-const testHabit: Habit[]|null = null
-//   [
-//   {
-//     id: "1",
-//     content: "drink water at least 8 cups",
-//     color: "red",
-//     createdAt: new Date(),
-//   },
-// ]
 export default function HabitDashboard() { 
   return (
     <div>

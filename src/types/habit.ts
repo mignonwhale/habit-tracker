@@ -16,8 +16,9 @@ export interface ColorOptions {
 export interface HabitStore {
   habits: Habit[];
   addHabit: (habit: Omit<Habit, 'id' | 'createdAt'>) => void;
-  removeHabit: (id: string) => void;
   updateHabit: (id: string, updates: Partial<Habit>) => void;
+  deleteHabit: (id: string) => void;
+  clearHabits: () => void;
 }
 
 

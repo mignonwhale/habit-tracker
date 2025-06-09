@@ -20,12 +20,6 @@ const useHabitStore = create<HabitStore>()(
         }));
       },
       
-      removeHabit: (id) => {
-        set((state) => ({
-          habits: state.habits.filter((habit) => habit.id !== id),
-        }));
-      },
-      
       updateHabit: (id, updates) => {
         set((state) => ({
           habits: state.habits.map((habit) =>
@@ -34,6 +28,17 @@ const useHabitStore = create<HabitStore>()(
         }));
       },
       
+      deleteHabit: (id) => {
+        set((state) => ({
+          habits: state.habits.filter((habit) => habit.id !== id),
+        }));
+      },
+
+      clearHabits: () => { 
+        set({habits: []});
+      },
+      
+
     }),
 
 
